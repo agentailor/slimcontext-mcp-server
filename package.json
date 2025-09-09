@@ -1,0 +1,42 @@
+{
+  "name": "slimcontext-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP Server for SlimContext - AI chat history compression tools",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "slimcontext-mcp-server": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "chat-history",
+    "compression",
+    "slimcontext"
+  ],
+  "author": "SlimContext MCP Server",
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/core": "^0.3.75",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "openai": "^4.57.0",
+    "slimcontext": "^2.1.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+}
