@@ -25,6 +25,10 @@
     "compression",
     "slimcontext"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentailor/slimcontext-mcp-server"
+  },
   "author": "SlimContext MCP Server",
   "license": "MIT",
   "dependencies": {
