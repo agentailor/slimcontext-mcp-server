@@ -5,7 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "slimcontext-mcp-server": "./dist/index.js"
+    "slimcontext-mcp-server": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
