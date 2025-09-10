@@ -11,7 +11,11 @@
     "build": "tsc",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "prettier --check .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo 'No tests configured'"
   },
   "keywords": [
     "mcp",
@@ -32,6 +36,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.5.4",
+    "prettier": "^3.6.2",
     "tsx": "^4.19.0",
     "typescript": "^5.6.2"
   },

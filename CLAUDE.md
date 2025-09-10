@@ -32,7 +32,7 @@ This is a Model Context Protocol (MCP) server that wraps the SlimContext library
   - Removes oldest non-system messages when token threshold exceeded
   - Fast, deterministic, no external dependencies
 
-- **`src/tools/summarize.ts`** - AI-powered summarization compression  
+- **`src/tools/summarize.ts`** - AI-powered summarization compression
   - Uses `SummarizeCompressor` from slimcontext library
   - Custom `OpenAISlimContextModel` adapter for OpenAI API integration
   - Creates summaries of older messages while preserving recent context
@@ -41,6 +41,7 @@ This is a Model Context Protocol (MCP) server that wraps the SlimContext library
 ### Message Format
 
 All tools work with SlimContext message format:
+
 ```typescript
 {
   role: 'system' | 'user' | 'assistant' | 'tool' | 'human',
@@ -67,6 +68,7 @@ The codebase handles role normalization (e.g., 'human' → 'user') when interfac
 ## TypeScript Configuration
 
 Uses strict TypeScript configuration with:
+
 - ES2022 target with ESNext modules
 - Strict type checking enabled (`noImplicitAny`, `strictNullChecks`, etc.)
 - Source maps and declarations generated
