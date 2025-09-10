@@ -6,8 +6,8 @@ A Model Context Protocol (MCP) server that wraps the [SlimContext](https://www.n
 
 SlimContext MCP Server exposes two powerful compression strategies as MCP tools:
 
-1. **`trim-messages`** - Token-based compression that removes oldest messages when exceeding token thresholds
-2. **`summarize-messages`** - AI-powered compression using OpenAI to create concise summaries
+1. **`trim_messages`** - Token-based compression that removes oldest messages when exceeding token thresholds
+2. **`summarize_messages`** - AI-powered compression using OpenAI to create concise summaries
 
 ## Installation
 
@@ -45,7 +45,8 @@ Add to your MCP client configuration:
 {
   "mcpServers": {
     "slimcontext": {
-      "command": "slimcontext-mcp-server"
+      "command": "npx",
+      "args": ["-y", "slimcontext-mcp-server"]
     }
   }
 }
@@ -57,24 +58,26 @@ Add to your MCP client configuration:
 
 ## Tools
 
-### trim-messages
+### trim_messages
 
 Compresses chat history using token-based trimming strategy.
 
 **Parameters:**
+
 - `messages` (required): Array of chat messages
 - `maxModelTokens` (optional): Maximum model token context window (default: 8192)
 - `thresholdPercent` (optional): Percentage threshold to trigger compression 0-1 (default: 0.7)
 - `minRecentMessages` (optional): Minimum recent messages to preserve (default: 2)
 
 **Example:**
+
 ```json
 {
   "messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Hello!"},
-    {"role": "assistant", "content": "Hi there! How can I help you today?"},
-    {"role": "user", "content": "Tell me about AI."}
+    { "role": "system", "content": "You are a helpful assistant." },
+    { "role": "user", "content": "Hello!" },
+    { "role": "assistant", "content": "Hi there! How can I help you today?" },
+    { "role": "user", "content": "Tell me about AI." }
   ],
   "maxModelTokens": 4000,
   "thresholdPercent": 0.8,
@@ -83,6 +86,7 @@ Compresses chat history using token-based trimming strategy.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -91,18 +95,19 @@ Compresses chat history using token-based trimming strategy.
   "messages_removed": 1,
   "compression_ratio": 0.75,
   "compressed_messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "assistant", "content": "Hi there! How can I help you today?"},
-    {"role": "user", "content": "Tell me about AI."}
+    { "role": "system", "content": "You are a helpful assistant." },
+    { "role": "assistant", "content": "Hi there! How can I help you today?" },
+    { "role": "user", "content": "Tell me about AI." }
   ]
 }
 ```
 
-### summarize-messages
+### summarize_messages
 
 Compresses chat history using AI-powered summarization strategy.
 
 **Parameters:**
+
 - `messages` (required): Array of chat messages
 - `maxModelTokens` (optional): Maximum model token context window (default: 8192)
 - `thresholdPercent` (optional): Percentage threshold to trigger compression 0-1 (default: 0.7)
@@ -112,15 +117,22 @@ Compresses chat history using AI-powered summarization strategy.
 - `customPrompt` (optional): Custom summarization prompt
 
 **Example:**
+
 ```json
 {
   "messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "I want to build a web scraper."},
-    {"role": "assistant", "content": "I can help you build a web scraper! What programming language would you prefer?"},
-    {"role": "user", "content": "Python please."},
-    {"role": "assistant", "content": "Great choice! For Python web scraping, I recommend using requests and BeautifulSoup..."},
-    {"role": "user", "content": "Can you show me a simple example?"}
+    { "role": "system", "content": "You are a helpful assistant." },
+    { "role": "user", "content": "I want to build a web scraper." },
+    {
+      "role": "assistant",
+      "content": "I can help you build a web scraper! What programming language would you prefer?"
+    },
+    { "role": "user", "content": "Python please." },
+    {
+      "role": "assistant",
+      "content": "Great choice! For Python web scraping, I recommend using requests and BeautifulSoup..."
+    },
+    { "role": "user", "content": "Can you show me a simple example?" }
   ],
   "maxModelTokens": 4000,
   "thresholdPercent": 0.6,
@@ -130,6 +142,7 @@ Compresses chat history using AI-powered summarization strategy.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -139,10 +152,16 @@ Compresses chat history using AI-powered summarization strategy.
   "summary_generated": true,
   "compression_ratio": 0.67,
   "compressed_messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "system", "content": "The user expressed interest in building a web scraper and requested help with Python. The assistant recommended using requests and BeautifulSoup libraries for Python web scraping."},
-    {"role": "assistant", "content": "Great choice! For Python web scraping, I recommend using requests and BeautifulSoup..."},
-    {"role": "user", "content": "Can you show me a simple example?"}
+    { "role": "system", "content": "You are a helpful assistant." },
+    {
+      "role": "system",
+      "content": "The user expressed interest in building a web scraper and requested help with Python. The assistant recommended using requests and BeautifulSoup libraries for Python web scraping."
+    },
+    {
+      "role": "assistant",
+      "content": "Great choice! For Python web scraping, I recommend using requests and BeautifulSoup..."
+    },
+    { "role": "user", "content": "Can you show me a simple example?" }
   ]
 }
 ```
@@ -171,6 +190,7 @@ All tools return structured error responses:
 ```
 
 Common error scenarios:
+
 - Missing OpenAI API key for summarization
 - Invalid message format
 - OpenAI API rate limits or errors
@@ -183,13 +203,15 @@ SlimContext uses a simple heuristic for token estimation: `Math.ceil(content.len
 ## Compression Strategies
 
 ### Trimming Strategy
+
 - Preserves all system messages
 - Preserves the most recent N messages
 - Removes oldest non-system messages until under token threshold
 - Fast and deterministic
 - No external API dependencies
 
-### Summarization Strategy  
+### Summarization Strategy
+
 - Preserves all system messages
 - Preserves the most recent N messages
 - Summarizes middle portion of conversation using AI

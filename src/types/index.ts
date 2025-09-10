@@ -3,10 +3,11 @@ import type { SlimContextMessage as SlimMessage } from 'slimcontext';
 
 export const SlimContextMessageSchema = z.object({
   role: z.enum(['system', 'user', 'assistant', 'tool', 'human']),
-  content: z.string()
+  content: z.string(),
 });
 
-export const TokenEstimatorSchema = z.function()
+export const TokenEstimatorSchema = z
+  .function()
   .args(SlimContextMessageSchema)
   .returns(z.number())
   .optional();
@@ -15,14 +16,14 @@ export const TokenBudgetConfigSchema = z.object({
   maxModelTokens: z.number().min(1).optional().default(8192),
   thresholdPercent: z.number().min(0).max(1).optional().default(0.7),
   minRecentMessages: z.number().min(0).optional(),
-  estimateTokens: TokenEstimatorSchema
+  estimateTokens: TokenEstimatorSchema,
 });
 
 export const TrimMessagesArgsSchema = z.object({
   messages: z.array(SlimContextMessageSchema).min(1),
   maxModelTokens: z.number().min(1).optional().default(8192),
   thresholdPercent: z.number().min(0).max(1).optional().default(0.7),
-  minRecentMessages: z.number().min(0).optional().default(2)
+  minRecentMessages: z.number().min(0).optional().default(2),
 });
 
 export const SummarizeMessagesArgsSchema = z.object({
@@ -32,7 +33,7 @@ export const SummarizeMessagesArgsSchema = z.object({
   minRecentMessages: z.number().min(0).optional().default(4),
   openaiApiKey: z.string().optional(),
   openaiModel: z.string().optional().default('gpt-5-mini'),
-  customPrompt: z.string().optional()
+  customPrompt: z.string().optional(),
 });
 
 export type SlimContextMessage = SlimMessage;
@@ -48,10 +49,9 @@ export interface MCPToolResult {
   }>;
 }
 
-
 export class SlimContextError extends Error {
   public override cause?: Error | undefined;
-  
+
   constructor(message: string, cause?: Error | undefined) {
     super(message);
     this.name = 'SlimContextError';
