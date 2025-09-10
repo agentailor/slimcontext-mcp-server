@@ -183,7 +183,7 @@ async function main() {
   const transport = new StdioServerTransport();
   const server = await createSlimContextMCPServer();
   await server.connect(transport);
-  console.error('Weather MCP Server running on stdio');
+  console.error('SlimContext MCP Server running on stdio');
 }
 
 main().catch((error) => {
