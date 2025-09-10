@@ -40,3 +40,8 @@ logs/
 *.swp
 *.bak
 *.tmp
+mcp-publisher.exe
+mcp-publisher
+.mcpregistry_github_token
+.mcpregistry_registry_token
+server.json

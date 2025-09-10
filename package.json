@@ -1,4 +1,5 @@
 {
+  "mcpName": "io.github.agentailor/slimcontext-mcp-server",
   "name": "slimcontext-mcp-server",
   "version": "0.1.0",
   "description": "MCP Server for SlimContext - AI chat history compression tools",
