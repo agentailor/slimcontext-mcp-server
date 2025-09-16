@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.agentailor/slimcontext-mcp-server",
+  "description": "MCP Server for SlimContext - AI chat history compression tools",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/agentailor/slimcontext-mcp-server",
+    "source": "github"
+  },
+  "version": "0.1.2",
+  "packages": [
+    {
+      "registry_type": "npm",
+      "registry_base_url": "https://registry.npmjs.org",
+      "identifier": "slimcontext-mcp-server",
+      "version": "0.1.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": []
+    }
+  ]
+}
