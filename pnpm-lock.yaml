@@ -18,8 +18,8 @@ importers:
         specifier: ^4.57.0
         version: 4.104.0(zod@3.25.76)
       slimcontext:
-        specifier: ^2.1.2
-        version: 2.1.2(@langchain/core@0.3.75(openai@4.104.0(zod@3.25.76)))
+        specifier: ^2.1.3
+        version: 2.1.3(@langchain/core@0.3.75(openai@4.104.0(zod@3.25.76)))
       zod:
         specifier: ^3.23.8
         version: 3.25.76
@@ -712,8 +712,8 @@ packages:
   simple-wcswidth@1.1.2:
     resolution: {integrity: sha512-j7piyCjAeTDSjzTSQ7DokZtMNwNlEAyxqSZeCS+CXH7fJ4jx3FuJ/mTW3mE+6JLs4VJBbcll0Kjn+KXI5t21Iw==}
 
-  slimcontext@2.1.2:
-    resolution: {integrity: sha512-7MEpOl3tngguKuHGWU1raadiu9UWHoIvid1lMvPc5Y6bjXZIIJCbZlvlntoOfAXOgT1uTDUQzwJiYigQwUEDaw==}
+  slimcontext@2.1.3:
+    resolution: {integrity: sha512-gu92RFY84Ucs+cjZbxHKcS+ce2fYqM5CJC6Ik9QtPzOswn7BAP9RZfxsc08XtAm24g6lcn+CQDAtqwBLidUb6w==}
     peerDependencies:
       '@langchain/core': '>=0.3.71 <1'
     peerDependenciesMeta:
@@ -1450,7 +1450,7 @@ snapshots:
 
   simple-wcswidth@1.1.2: {}
 
-  slimcontext@2.1.2(@langchain/core@0.3.75(openai@4.104.0(zod@3.25.76))):
+  slimcontext@2.1.3(@langchain/core@0.3.75(openai@4.104.0(zod@3.25.76))):
     optionalDependencies:
       '@langchain/core': 0.3.75(openai@4.104.0(zod@3.25.76))
 
